@@ -28,42 +28,97 @@
 
 </style>
 
+<div class="slider-toggle">
+    <input type="checkbox" id="slider-toggle">
+    <label for="slider-toggle"></label>
+    </div>
+    
+    <style>
+    .slider-toggle {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    margin: 20px auto;
+    float: right;
+    margin-right: 20px;
+    }
+    
+    .slider-toggle input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    
+    .slider-toggle label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: gray;
+    border-radius: 34px;
+    transition: 0.4s;
+    }
+    
+    .slider-toggle label:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    }
+    
+    input[type="checkbox"]:checked + label {
+    background-color: green;
+    }
+    
+    input[type="checkbox"]:checked + label:before {
+    transform: translateX(26px);
+    }
+    </style>
+    
+    <script>
+    const toggle = document.querySelector("#slider-toggle");
+    
+    toggle.addEventListener("change", function() {
+    let target = document.querySelector("body");
+    
+    if (this.checked) {
+      target.style.backgroundColor = "black";
+      target.style.color = "white";
+    
+      let alist = document.querySelectorAll("a");
+      let i = 0;
+      while (i < alist.length) {
+        alist[i].style.color = "white";
+        i += 1;
+      }
+    } else {
+      target.style.backgroundColor = "white";
+      target.style.color = "black";
+    
+      let alist = document.querySelectorAll("a");
+      let i = 0;
+      while (i < alist.length) {
+        alist[i].style.color = "black";
+        i += 1;
+      }
+    }
+    });
+    </script>
+
 <body>
      <h1><a href="index.html" 
         style="text-decoration: underline;">VESPER</a>
     </h1>
 
-   
-   <input type="button" value="night" onclick="
     
-    let target = document.querySelector('body');
-    
-      if(this.value === 'night'){ 
-          target.style.backgroundColor='black';
-          target.style.color = 'white';
-          this.value = 'day'; 
-          
-     // a 태그 컬러 변경 (night)
-     let alist = document.querySelectorAll('a');
-     let i = 0;
-       while(i < alist.length){
-           alist[i].style.color = 'white';
-           i += 1; }
         
-      } else{
-          target.style.backgroundColor='white';
-          target.style.color='black';
-          this.value = 'night';
-          
-     // a 태그 컬러 변경 (day)
-     let alist = document.querySelectorAll('a');
-     let i = 0;
-       while(i < alist.length){
-           alist[i].style.color = 'black';
-           i += 1; }
-      }  
-">
-
 
 
 <div id="grid">
